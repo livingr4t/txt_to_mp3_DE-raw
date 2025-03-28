@@ -59,5 +59,9 @@ def upload_file():
     except Exception as e:
         return f"Błąd: Wystąpił nieoczekiwany problem: {str(e)}", 500
 
+import os
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))  # Get the port from the environment variable
+    app.run(debug=True, host='0.0.0.0', port=port)  # Bind to 0.0.0.0 for external access
+
