@@ -34,7 +34,7 @@ def upload_file():
     try:
         # Odczytanie treści pliku tekstowego
         content = file.read().decode('utf-8')
-        sentences = [sentence.strip() for sentence in content.split('.') if sentence.strip()]
+        sentences = [sentence.strip() for sentence in re.split(r'[.!?]', content) if sentence.strip()]
 
         combined_audio = AudioSegment.empty()
 
